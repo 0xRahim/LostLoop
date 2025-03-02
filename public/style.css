@@ -1,0 +1,7 @@
+/* You can add custom styles if needed.
+   For example, to adjust card shadows, border radii, etc. */
+/* Example: */
+.card {
+    @apply bg-white rounded-xl shadow-lg p-6;
+  }
+  

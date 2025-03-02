@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>LostLoop - Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-500 to-orange-400 min-h-screen">
+
+  <!-- Navbar (consistent with other pages) -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-4xl mx-auto flex justify-between items-center p-4">
+      <a href="dashboard.html" class="flex items-center space-x-2">
+        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 20V12h4v8h5V10l-7-7-7 7v10h5z"/>
+        </svg>
+        <span class="font-bold text-xl">LostLoop</span>
+      </a>
+      <div class="flex space-x-4">
+        <a href="dashboard.html" class="p-2 hover:text-purple-600">
+          <!-- Home Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"/>
+          </svg>
+        </a>
+        <a href="search.html" class="p-2 hover:text-purple-600">
+          <!-- Search Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </a>
+        <a href="profile.html" class="p-2 hover:text-purple-600">
+          <!-- Profile Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M5.121 17.804A9 9 0 1118.876 6.12M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </a>
+        <a href="notifications.html" class="p-2 hover:text-purple-600">
+          <!-- Notifications Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1"/>
+          </svg>
+        </a>
+        <button onclick="logout()" class="p-2 hover:text-purple-600">
+          <!-- Logout Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m4-8V5a2 2 0 10-4 0v1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <!-- Top padding (pt-24) ensures spacing from the navbar -->
+  <main class="pt-24 pb-8 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Profile Card Container -->
+      <div class="mx-auto max-w-xl mb-8">
+        <!-- Profile Card with fixed height, allowing overlapping avatar -->
+        <div id="profile-card" class="relative bg-white rounded-xl shadow-2xl text-center"
+             style="height: 280px; overflow: visible;">
+          <!-- Overlapping Avatar (half-out) -->
+          <div id="profile-avatar" class="absolute left-1/2 transform -translate-x-1/2"
+               style="top: -40px; width: 80px; height: 80px;">
+            <!-- Avatar image inserted by loadProfile() -->
+          </div>
+          <!-- Card Content -->
+          <div class="pt-16 px-6">
+            <div id="profile-info"></div>
+            <!-- Action Buttons -->
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4 mt-6">
+              <button id="edit-profile-button" onclick="editProfile()" class="bg-purple-600 text-white px-4 py-2 rounded font-semibold hover:bg-purple-700 transition duration-200">
+                Edit Profile
+              </button>
+              <button id="emailButton" class="bg-gray-200 text-gray-700 px-4 py-2 rounded font-semibold hover:bg-gray-300 transition duration-200">
+                Email
+              </button>
+              <button onclick="shareProfile()" class="bg-gray-200 text-gray-700 px-4 py-2 rounded font-semibold hover:bg-gray-300 transition duration-200">
+                Share Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Posts Section -->
+      <div class="mt-8">
+        <h2 id="posts-heading" class="text-2xl font-bold mb-4 text-white">My Posts</h2>
+        <div id="user-posts" class="grid gap-4">
+          <!-- Posts loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Send Reward Section -->
+      <div class="mt-8">
+        <h2 class="text-2xl font-bold mb-4 text-white">Send Reward</h2>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+          <input id="reward-recipient" type="text" placeholder="Recipient User ID" class="w-full p-3 mb-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+          <input id="reward-amount" type="number" placeholder="Amount" class="w-full p-3 mb-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+          <button onclick="sendReward()" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-200">
+            Send Reward
+          </button>
+          <p id="reward-msg" class="mt-2 text-sm text-green-600"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+      <div class="bg-white rounded-xl p-6 w-full max-w-md relative">
+        <button onclick="closeEditProfileModal()" class="absolute top-2 right-2 text-gray-600 text-2xl">&times;</button>
+        <h2 class="text-2xl font-bold mb-4">Edit Profile</h2>
+        <input id="edit-username" type="text" placeholder="New Username" class="w-full p-3 mb-2 border rounded-lg focus:ring-2 focus:ring-purple-600">
+        <input id="edit-email" type="email" placeholder="New Email" class="w-full p-3 mb-2 border rounded-lg focus:ring-2 focus:ring-purple-600">
+        <input id="edit-profile-pic" type="text" placeholder="Profile Picture URL (optional)" class="w-full p-3 mb-2 border rounded-lg focus:ring-2 focus:ring-purple-600">
+        <button onclick="saveProfileEdits()" class="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-200">
+          Save Changes
+        </button>
+        <p id="edit-profile-msg" class="mt-2 text-sm text-green-600"></p>
+      </div>
+    </div>
+</body>
+</html>

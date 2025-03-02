@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>LostLoop - Search Posts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navbar (same as above) -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-4xl mx-auto flex justify-between items-center p-4">
+      <a href="dashboard.html" class="flex items-center space-x-2">
+        <svg class="w-6 h-6 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10 20V12h4v8h5V10l-7-7-7 7v10h5z"/>
+        </svg>
+        <span class="font-bold text-xl">LostLoop</span>
+      </a>
+      <div class="flex space-x-4">
+        <a href="dashboard.html" class="p-2 hover:text-purple-600">
+          <!-- Home Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6"/>
+          </svg>
+        </a>
+        <a href="search.html" class="p-2 hover:text-purple-600">
+          <!-- Search Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </a>
+        <a href="profile.html" class="p-2 hover:text-purple-600">
+          <!-- Profile Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M5.121 17.804A9 9 0 1118.876 6.12M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </a>
+        <a href="notifications.html" class="p-2 hover:text-purple-600">
+          <!-- Notifications Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1"/>
+          </svg>
+        </a>
+        <button onclick="logout()" class="p-2 hover:text-purple-600">
+          <!-- Logout Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 11-4 0v-1m4-8V5a2 2 0 10-4 0v1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-20 pb-8 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold mb-6">Search Posts</h1>
+      <div class="mb-6">
+        <input id="search-query" type="text" placeholder="Enter keywords to search..." class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+        <button onclick="performSearch()" class="mt-2 w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition duration-200">
+          Search
+        </button>
+      </div>
+      <div id="search-results" class="grid gap-6">
+        <!-- Search results (posts) will be inserted here -->
+      </div>
+    </div>
+  </main>
