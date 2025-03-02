@@ -1,4 +1,4 @@
-const API_URL = "https://lostloop.onrender.com/";
+const API_URL = window.location.origin;
 let postIdToDelete = null;
 // Helper: Retrieve token from localStorage
 function getToken() {
@@ -174,14 +174,18 @@ async function loadDashboard() {
         <div class="relative bg-white rounded-lg shadow-md p-4 overflow-hidden">
           <!-- User avatar + username in top-left corner -->
           <div class="absolute top-2 left-2 flex items-center">
+          <a href="/profile.html?userid=${post.user.id}">
             <img
               src="${profilePic}"
               alt="${post.user.username}'s avatar"
               referrerpolicy="no-referrer"
               class="w-8 h-8 rounded-full object-cover mr-2"
-            />
+            /> </a>
+            <a href="/profile.html?userid=${post.user.id}">
             <span class="font-semibold">${post.user.username}</span>
+            </a>
           </div>
+         
           <!-- Updated date in top-right corner -->
           <span class="absolute top-2 right-2 text-sm text-gray-500">
             Updated: ${updatedDate}
@@ -544,13 +548,18 @@ async function loadPostDetails() {
   const post = data.post;
   const updatedDate = new Date(post.updatedAt).toLocaleDateString();
   const ownerPic = post.owner.profile_pic || "https://via.placeholder.com/40?text=No+Pic";
+  const ownerId = post.owner.id;
 
   // Build the post details HTML
   document.getElementById("post-details").innerHTML = `
     <div class="flex items-center justify-between mb-4">
       <div class="flex items-center">
+      <a href=/profile.html?userid=${ownerId}>
         <img src="${ownerPic}" referrerpolicy="no-referrer" alt="${post.owner.username}'s avatar" class="w-8 h-8 rounded-full object-cover mr-2" />
+        </a>
+         <a href=/profile.html?userid=${ownerId}>
         <span class="font-semibold">${post.owner.username}</span>
+        </a>
       </div>
       <span class="text-sm text-gray-500">Updated: ${updatedDate}</span>
     </div>
