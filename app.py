@@ -8,7 +8,7 @@ from sqlalchemy import func
 
 
 app = Flask(__name__, static_folder='public')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lostloop.db'
+app.config['SQLALCHEMY_DATABASE_URI'] =  f"sqlite:///{os.path.join(BASEDIR, 'instance', 'lostloop.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
